@@ -1,8 +1,8 @@
 package com.example.proyectopc.repositorio;
 
-import com.example.proyectopc.modelo.Message;
 import com.example.proyectopc.modelo.Score;
-import com.example.proyectopc.repositorio.CRUD.ScoreCrudRepository;
+import com.example.proyectopc.modelo.Status;
+import com.example.proyectopc.repositorio.CRUD.StatusCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,22 +10,22 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ScoreRepository {
+public class StatusRepository {
 
     @Autowired
-    private ScoreCrudRepository scoreCrudRepository;
+    private StatusCrudRepository statusCrudRepository;
 
-    public List<Score> getAll(){
-        return (List<Score>) scoreCrudRepository.findAll();
+    public List<Status> getAll(){
+        return (List<Status>) statusCrudRepository.findAll();
     }
-    public Optional<Score> getScore(int id){
-        return scoreCrudRepository.findById(id);
+    public Optional<Status> getStatus(int id){
+        return statusCrudRepository.findById(id);
     }
-    public Score save(Score p){
-        return scoreCrudRepository.save(p);
+    public Status save(Status p){
+        return statusCrudRepository.save(p);
     }
-    public void delete(Score p){
-        scoreCrudRepository.delete(p);
+    public void delete(Status p){
+        statusCrudRepository.delete(p);
     }
 
 }

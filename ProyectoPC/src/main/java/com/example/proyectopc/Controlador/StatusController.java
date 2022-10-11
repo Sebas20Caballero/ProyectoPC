@@ -1,9 +1,9 @@
 package com.example.proyectopc.Controlador;
 
 
-import com.example.proyectopc.Servicios.ScoreServices;
-import com.example.proyectopc.modelo.Message;
+import com.example.proyectopc.Servicios.StatusServices;
 import com.example.proyectopc.modelo.Score;
+import com.example.proyectopc.modelo.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,38 +13,37 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api/Score")
-public class ScoreController {
+@RequestMapping("/api/Status")
+public class StatusController {
 
     @Autowired
-    private ScoreServices scoreServices;
+    private StatusServices statusServices;
 
     @GetMapping("/all")
-    public List<Score> getAll(){
-        return scoreServices.getAll();
-
+    public List<Status> getAll(){
+        return statusServices.getAll();
     }
     @GetMapping("/{id}")
-    public Optional<Score> getScore(@PathVariable("id") int id){
-        return scoreServices.getScore(id);
+    public Optional<Status> getStatus(@PathVariable("id") int id){
+        return statusServices.getStatus(id);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Score save(@RequestBody Score p){
-        return scoreServices.save(p);
+    public Status save(@RequestBody Status p){
+        return statusServices.save(p);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Score update(@RequestBody Score p){
-        return scoreServices.update(p);
+    public Status update(@RequestBody Status p){
+        return statusServices.update(p);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id")int id){
-        return scoreServices.delete(id);
+        return statusServices.delete(id);
     }
 
 

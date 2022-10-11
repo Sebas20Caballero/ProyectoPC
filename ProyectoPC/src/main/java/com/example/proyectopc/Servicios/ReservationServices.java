@@ -37,12 +37,20 @@ public class ReservationServices {
         if (p.getIdReservation() != null) {
             Optional<Reservation> q = reservationRepository.getReservation(p.getIdReservation());
             if (q.isPresent()) {
-
                 if (p.getStarDate() != null) {
                     q.get().setStarDate(p.getStarDate());
                 }
                 if (p.getDevolutionDate() != null) {
                     q.get().setDevolutionDate(p.getDevolutionDate());
+                }
+                if(p.getClient()!=null){
+                    q.get().setClient(p.getClient());
+                }
+                if(p.getComputer()!=null){
+                    q.get().setComputer(p.getComputer());
+                }
+                if(p.getScore()!=null){
+                    q.get().setScore(p.getScore());
                 }
                     reservationRepository.save(q.get());
                     return q.get();

@@ -11,10 +11,11 @@ public class Score {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idScore;
-    private Integer cal;
-    private String messageText;
+    private Integer score;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name="idReservation")
+    @JsonIgnoreProperties({"reservation","score"})
     private Reservation reservation;
 
     public Integer getIdScore() {
@@ -25,20 +26,12 @@ public class Score {
         this.idScore = idScore;
     }
 
-    public Integer getCal() {
-        return cal;
+    public Integer getScore() {
+        return score;
     }
 
-    public void setCal(Integer cal) {
-        this.cal = cal;
-    }
-
-    public String getMessageText() {
-        return messageText;
-    }
-
-    public void setMessageText(String messageText) {
-        this.messageText = messageText;
+    public void setScore(Integer score) {
+        this.score = score;
     }
 
     public Reservation getReservation() {

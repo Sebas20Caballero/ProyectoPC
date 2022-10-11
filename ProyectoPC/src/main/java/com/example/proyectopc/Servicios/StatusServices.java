@@ -1,8 +1,8 @@
 package com.example.proyectopc.Servicios;
 
-import com.example.proyectopc.modelo.Message;
 import com.example.proyectopc.modelo.Score;
-import com.example.proyectopc.repositorio.ScoreRepository;
+import com.example.proyectopc.modelo.Status;
+import com.example.proyectopc.repositorio.StatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,41 +10,41 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ScoreServices {
+public class StatusServices {
 
     @Autowired
-    private ScoreRepository scoreRepository;
+    private StatusRepository statusRepository;
 
-    public List<Score> getAll(){
-        return scoreRepository.getAll();
+    public List<Status> getAll(){
+        return statusRepository.getAll();
     }
-    public Optional<Score> getScore(int id){
-        return scoreRepository.getScore(id);
+    public Optional<Status> getStatus(int id){
+        return statusRepository.getStatus(id);
     }
-    public Score save(Score p){
-        if(p.getIdScore()==null){
-            return scoreRepository.save(p);
+    public Status save(Status p){
+        if(p.getIdStatus()==null){
+            return statusRepository.save(p);
         } else {
-            Optional<Score> e = scoreRepository.getScore(p.getIdScore());
+            Optional<Status> e = statusRepository.getStatus(p.getIdStatus());
             if(e.isPresent()){
                 return p;
             }else{
-                return scoreRepository.save(p);
+                return statusRepository.save(p);
             }
         }
     }
 
-    public Score update(Score p){
-        if(p.getIdScore()!=null){
-            Optional<Score> q = scoreRepository.getScore(p.getIdScore());
+    public Status update(Status p){
+        if(p.getIdStatus()!=null){
+            Optional<Status> q = statusRepository.getStatus(p.getIdStatus());
             if(q.isPresent()){
-                if(p.getScore()!=null){
-                    q.get().setScore(p.getScore());
+                if(p.getStatus()!=null){
+                    q.get().setStatus(p.getStatus());
                 }
                 if(p.getReservation()!=null){
                     q.get().setReservation(p.getReservation());
                 }
-                scoreRepository.save(q.get());
+                statusRepository.save(q.get());
                 return q.get();
             }else {
                 return p;
@@ -56,9 +56,9 @@ public class ScoreServices {
     public boolean delete(int id){
 
         boolean flag=false;
-        Optional<Score>p= scoreRepository.getScore(id);
+        Optional<Status>p= statusRepository.getStatus(id);
         if(p.isPresent()){
-            scoreRepository.delete(p.get());
+            statusRepository.delete(p.get());
             flag=true;
         }
 

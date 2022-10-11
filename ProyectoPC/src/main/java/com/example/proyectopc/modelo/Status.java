@@ -5,33 +5,33 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 @Entity
-@Table(name="score")
-public class Score {
+@Table(name="status")
+public class Status {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idScore;
-    private Integer score;
+    private Integer idStatus;
+    private String status;
 
     @ManyToOne
     @JoinColumn(name="idReservation")
-    @JsonIgnoreProperties({"reservation","score"})
+    @JsonIgnoreProperties({"reservation","status"})
     private Reservation reservation;
 
-    public Integer getIdScore() {
-        return idScore;
+    public Integer getIdStatus() {
+        return idStatus;
     }
 
-    public void setIdScore(Integer idScore) {
-        this.idScore = idScore;
+    public void setIdStatus(Integer idStatus) {
+        this.idStatus = idStatus;
     }
 
-    public Integer getScore() {
-        return score;
+    public String getStatus() {
+        return status;
     }
 
-    public void setScore(Integer score) {
-        this.score = score;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Reservation getReservation() {

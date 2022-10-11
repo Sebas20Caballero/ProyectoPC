@@ -38,11 +38,11 @@ public class ScoreServices {
         if(p.getIdScore()!=null){
             Optional<Score> q = scoreRepository.getScore(p.getIdScore());
             if(q.isPresent()){
-                if(p.getCal()!=null){
-                    q.get().setCal(p.getCal());
+                if(p.getScore()!=null){
+                    q.get().setScore(p.getScore());
                 }
-                if(p.getMessageText()!=null){
-                    q.get().setMessageText(p.getMessageText());
+                if(p.getReservation()!=null){
+                    q.get().setReservation(p.getReservation());
                 }
                 scoreRepository.save(q.get());
                 return q.get();
