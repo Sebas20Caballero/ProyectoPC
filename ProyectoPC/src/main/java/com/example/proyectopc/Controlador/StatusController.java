@@ -24,7 +24,7 @@ public class StatusController {
         return statusServices.getAll();
     }
     @GetMapping("/{id}")
-    public Optional<Status> getStatus(@PathVariable("id") int id){
+    public Optional<Status> getStatus(@PathVariable("id2") int id){
         return statusServices.getStatus(id);
     }
 
